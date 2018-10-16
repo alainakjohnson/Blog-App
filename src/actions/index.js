@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from "lodash";
 
 export const FETCH_POSTS = 'fetch_posts';
 export const CREATE_POST = 'create_post';
@@ -14,11 +15,16 @@ export function fetchPosts(){
     })
 }
 
-export function createPost(values){
-    const request = axios.post(`${ROOT_URL}/posts`, values);
+export function createPost(values, callback) {
+    if (!values.hasReferences || values.hasReferences===false)
+        values =  _.omit(values, "references" );
 
-    return ({
+    const request = axios
+        .post(`${ROOT_URL}/posts`, values)
+        .then(() => callback());
+
+    return {
         type: CREATE_POST,
         payload: request
-    })
+    };
 }
