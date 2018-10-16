@@ -1,0 +1,41 @@
+commit 1d4c32fe6322083471baba5629f234ba3fd6a0ac
+Author: alainakjohnson <alainakjohnson@gmail.com>
+Date:   Tue Oct 16 03:55:49 2018 +0000
+
+    completed blog-part-2 hurray
+
+commit 3a5246435835129fee3b13dd14bc842b15848e18
+Author: alainakjohnson <alainakjohnson@gmail.com>
+Date:   Tue Oct 16 03:47:35 2018 +0000
+
+    create post action added
+
+commit be0b068703fd73c2b57965cb7bdb83ae5097fecf
+Author: alainakjohnson <alainakjohnson@gmail.com>
+Date:   Tue Oct 16 02:28:12 2018 +0000
+
+    form added
+
+commit 5734b6b7f6dbd70921d888927d15d18e01dd169f
+Author: alainakjohnson <alainakjohnson@gmail.com>
+Date:   Tue Oct 16 01:02:32 2018 +0000
+
+    3.3
+
+commit 8f72a258687cb9f9a80854bba4b14d3225845ab2
+Author: alainakjohnson <alainakjohnson@gmail.com>
+Date:   Sun Oct 14 03:46:29 2018 +0000
+
+    blog-part-1 complete
+
+commit 487222316d7b7e629f7b174ef45fb18803d0819e
+Author: alainakjohnson <alainakjohnson@gmail.com>
+Date:   Sat Oct 13 20:44:48 2018 +0000
+
+    created a new react app
+
+commit 09f6c82a28bdfd9c5c9d2c39dcafb621e2bba104
+Author: alainakjohnson <alainakjohnson@gmail.com>
+Date:   Sat Oct 13 20:41:53 2018 +0000
+
+    Initial commit from Create React App
