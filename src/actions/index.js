@@ -4,6 +4,7 @@ import _ from "lodash";
 export const FETCH_POSTS = 'fetch_posts';
 export const FETCH_POST = "fetch_post";
 export const CREATE_POST = 'create_post';
+export const DELETE_POST = "delete_post";
 
 const ROOT_URL = "https://blog-server-alaina-johnson.herokuapp.com/api";
 
@@ -36,5 +37,16 @@ export function fetchPost(id) {
     return {
         type: FETCH_POST,
         payload: request
+    };
+}
+
+export function deletePost(id, callback) {
+    const request = axios
+        .delete(`${ROOT_URL}/posts/${id}`)
+        .then(() => callback());
+
+    return {
+        type: DELETE_POST,
+        payload: id
     };
 }
