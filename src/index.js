@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PostsIndex from './containers/posts_index';
 import PostsNew from "./containers/posts_new";
 import PostsShow from "./containers/posts_show";
+import PostsEdit from "./containers/posts_edit";
 import rootReducer from './reducers';
 import {createStore,applyMiddleware} from 'redux';
 import ReduxPromise from 'redux-promise'
@@ -22,6 +23,7 @@ ReactDOM.render(
             <div>
             <Switch>
                 <Route path="/api/posts/new" component={PostsNew} />
+                <Route path="/api/posts/:id/edit" component={PostsEdit} />
                 <Route path="/api/posts/:id" component={PostsShow} />
                 <Route exact path='/' component={PostsIndex}/>
                 <Route path="/api/posts" component={PostsIndex} />

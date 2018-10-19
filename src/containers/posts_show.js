@@ -29,6 +29,8 @@ class PostsShow extends Component {
 
         return (
             <div className="container">
+                <Link to="/api/posts/:id/edit" className="btn btn-primary float-right">Update Post</Link>
+            
                 <Link to="/" className="btn btn-primary">Back to Index</Link>
                         
                 <div className="container">
@@ -58,6 +60,7 @@ class PostsShow extends Component {
                     >
                     Delete Post
                     </button>     
+                
                 </div>              
             </div>
         );

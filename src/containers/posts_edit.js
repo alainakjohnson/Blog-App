@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Link } from "react-router-dom";
-import { createPost } from "../actions";
+import { updatePost } from "../actions";
 
-class PostsNew extends Component {
+class PostsEdit extends Component {
     renderTitleField(field){
         return(
             <div className="form-group">
@@ -73,7 +73,7 @@ class PostsNew extends Component {
     }
     
     onSubmit(values) {
-        this.props.createPost(values, () => {
+        this.props.updatePost(values, () => {
             // user is redirected to the '/' route
             this.props.history.push('/');
         });
@@ -110,7 +110,7 @@ class PostsNew extends Component {
                             component={this.renderReferencesField}
                         />
                     )}
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Update</button>
                     
                     <Link to="/" className="btn btn-primary">Cancel</Link>
                 </form>
@@ -138,19 +138,20 @@ function validate(values) {
 }
     
     
-PostsNew = reduxForm({
+PostsEdit = reduxForm({
     validate,
     form: "PostsNewForm"
-})(PostsNew);
+})(PostsEdit);
 
 const selector = formValueSelector('PostsNewForm');
-PostsNew = connect(state => {
+PostsEdit = connect((state, ownProps) => {
   // can select values individually
   const title = selector(state, 'title')
   const category = selector(state, 'category')
   const content = selector(state, 'content')
   const hasRefsValue = selector(state, 'hasReferences')
   const refsValue = selector(state, 'references')
+  const initialValues = state.posts[ownProps.match.params.id]
 
   // props
   return {
@@ -158,9 +159,10 @@ PostsNew = connect(state => {
     category,
     content,
     hasRefsValue,
-    refsValue
+    refsValue,
+    initialValues
   }
-}, {createPost} )(PostsNew);
+}, {updatePost} )(PostsEdit);
 
 
-export default PostsNew;
+export default PostsEdit;
