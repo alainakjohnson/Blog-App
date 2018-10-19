@@ -138,6 +138,7 @@ function validate(values) {
     
     
 PostsNew = reduxForm({
+    validate,
     form: "PostsNewForm"
 })(PostsNew);
 
