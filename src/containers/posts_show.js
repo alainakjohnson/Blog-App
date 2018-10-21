@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchPost, deletePost } from "../actions";
+import { fetchPost, deletePost, updatePost } from "../actions";
 
 class PostsShow extends Component {
     componentDidMount() {
@@ -29,11 +29,21 @@ class PostsShow extends Component {
 
         return (
             <div className="container">
-                <Link to="/api/posts/:id/edit" className="btn btn-primary float-right">Edit Post</Link>
-            
+
                 <Link to="/" className="btn btn-primary">Back to Index</Link>
-                        
+        
+                <button 
+                    className="btn btn-danger float-right"
+                    onClick={this.onDeleteClick.bind(this)}
+                    >
+                    Delete Post
+                    </button>     
+            
+                
+                <Link to={`/api/posts/${post._id}/edit`} className="btn btn-primary float-right">Edit Post</Link>
+         
                 <div className="container">
+
                     <div className="row">
                         <div className="col-2"><h5>Title</h5></div>
                         <div className="col-10"><h4>{post.title}</h4></div>
@@ -52,14 +62,7 @@ class PostsShow extends Component {
                             <div className="col-10"><p>{post.references}</p></div>
                         </div>
                     )}
-                    <Link to="/" className="btn btn-primary">Back to Index</Link>
-
-                    <button
-                        className="btn btn-danger float-right"
-                        onClick={this.onDeleteClick.bind(this)}
-                    >
-                    Delete Post
-                    </button>     
+                    
                 
                 </div>              
             </div>
@@ -74,5 +77,5 @@ function mapStateToProps({ posts }, ownProps) {
 
 export default connect(
     mapStateToProps,
-    { fetchPost, deletePost }
+    { fetchPost, deletePost, updatePost }
 )(PostsShow);

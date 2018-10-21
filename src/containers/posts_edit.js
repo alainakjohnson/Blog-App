@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Link } from "react-router-dom";
-import { updatePost } from "../actions";
+import { createPost, updatePost } from "../actions";
 
 class PostsEdit extends Component {
+
+
+
     renderTitleField(field){
         return(
             <div className="form-group">
@@ -79,6 +82,9 @@ class PostsEdit extends Component {
         });
     }
 
+    //<button className="btn btn-primary float-right" onClick={this.onUpdateclick.bind(this)}>Edit Post</button>
+
+
     render() {
         const { handleSubmit } = this.props;
         return (
@@ -110,7 +116,7 @@ class PostsEdit extends Component {
                             component={this.renderReferencesField}
                         />
                     )}
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary">Update</button>
                     
                     <Link to="/" className="btn btn-primary">Cancel</Link>
                 </form>
@@ -137,33 +143,19 @@ function validate(values) {
     return errors;
 }
     
-    
+    //pass in configurations
 PostsEdit = reduxForm({
     validate,
     form: "PostsEditForm"
 })(PostsEdit);
 
-// export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ 
-//   form: 'ChartForm',
-// })(ChartForm));
-
 const selector = formValueSelector('PostsEditForm');
 PostsEdit = connect((state, ownProps) => {
   //can select values individually
-  const title = selector(state, 'title')
-  const category = selector(state, 'category')
-  const content = selector(state, 'content')
-  const hasRefsValue = selector(state, 'hasReferences')
-  const refsValue = selector(state, 'references')
   const initialValues = state.posts[ownProps.match.params.id] 
 
   // props
   return {
-    // title,
-    // category,
-    // content,
-    // hasRefsValue,
-    // refsValue,
     initialValues
   }
 }, {updatePost} )(PostsEdit);

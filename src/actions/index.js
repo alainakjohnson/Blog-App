@@ -54,7 +54,7 @@ export function deletePost(id, callback) {
 
 export function updatePost(id, callback) {
     const request = axios
-        .put(`${ROOT_URL}/posts/${id}`)
+        .put(`${ROOT_URL}/posts/${id}/edit`)
         .then(() => callback());
 
     return {
