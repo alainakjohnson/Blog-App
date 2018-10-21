@@ -5,8 +5,6 @@ export default function (state={}, action){
     switch(action.type){
         case DELETE_POST:
             return _.omit(state, action.payload);
-        case UPDATE_POST:
-            return _.merge(state, action.payload);
         case FETCH_POSTS:
             return _.mapKeys(action.payload.data, '_id')
         case FETCH_POST:
@@ -14,6 +12,8 @@ export default function (state={}, action){
             const newState = {...state};
             newState[post._id] = post;
             return newState;
+        case UPDATE_POST:
+           return _.merge(state, action.payload);
         default:
             return state;
     }

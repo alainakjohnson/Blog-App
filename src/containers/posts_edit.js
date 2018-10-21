@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from "redux-form";
 import { Link } from "react-router-dom";
-import { createPost, updatePost } from "../actions";
+import { updatePost } from "../actions";
 
 class PostsEdit extends Component {
 
@@ -74,22 +74,19 @@ class PostsEdit extends Component {
             </div>
         );
     }
-    
-    onSubmit(values) {
-        this.props.updatePost(values, () => {
-            // user is redirected to the '/' route
+
+    onUpdateClick(values){
+        const { id } = this.props.match.params;
+        this.props.updatePost(values, id, ()=>{
             this.props.history.push('/');
-        });
+            });
     }
-
-    //<button className="btn btn-primary float-right" onClick={this.onUpdateclick.bind(this)}>Edit Post</button>
-
 
     render() {
         const { handleSubmit } = this.props;
         return (
             <div className="container">
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                <form onSubmit={handleSubmit(this.onUpdateClick.bind(this))}>
                     <Field name="title" component={this.renderTitleField} />
                     <Field
                         name="category"
