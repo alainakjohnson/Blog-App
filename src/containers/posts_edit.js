@@ -110,7 +110,7 @@ class PostsEdit extends Component {
                             component={this.renderReferencesField}
                         />
                     )}
-                    <button type="submit" className="btn btn-primary">Update</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                     
                     <Link to="/" className="btn btn-primary">Cancel</Link>
                 </form>
@@ -140,26 +140,30 @@ function validate(values) {
     
 PostsEdit = reduxForm({
     validate,
-    form: "PostsNewForm"
+    form: "PostsEditForm"
 })(PostsEdit);
 
-const selector = formValueSelector('PostsNewForm');
+// export default connect(mapStateToProps, mapDispatchToProps)(reduxForm({ 
+//   form: 'ChartForm',
+// })(ChartForm));
+
+const selector = formValueSelector('PostsEditForm');
 PostsEdit = connect((state, ownProps) => {
-  // can select values individually
+  //can select values individually
   const title = selector(state, 'title')
   const category = selector(state, 'category')
   const content = selector(state, 'content')
   const hasRefsValue = selector(state, 'hasReferences')
   const refsValue = selector(state, 'references')
-  const initialValues = state.posts[ownProps.match.params.id]
+  const initialValues = state.posts[ownProps.match.params.id] 
 
   // props
   return {
-    title,
-    category,
-    content,
-    hasRefsValue,
-    refsValue,
+    // title,
+    // category,
+    // content,
+    // hasRefsValue,
+    // refsValue,
     initialValues
   }
 }, {updatePost} )(PostsEdit);

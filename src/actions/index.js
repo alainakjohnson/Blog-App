@@ -59,6 +59,6 @@ export function updatePost(id, callback) {
 
     return {
         type: UPDATE_POST,
-        payload: id
+        payload: request
     };
 }
